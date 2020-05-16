@@ -34,6 +34,21 @@
         </table>
     </div>
 </div>
+
+<br>
+
+<center>
+    <section class="container-palabra">
+        <div id="card-palabra">
+            <figure class="front">1</figure>
+            <figure class="back">2</figure>
+          </div>
+    </section>
+
+    <button id="verPalabra" class="btn btn-dark">Ver</button>
+    <button id="siguiente" class="btn btn-primary">Siguiente </button>
+</center>
+
 <div id="confirmDelete" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -56,11 +71,73 @@
         </div>
     </div>
 </div>
+<style>
+    .container-palabra {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  perspective: 800px;
+  margin-bottom: 10px;
+}
 
+ #card-palabra {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+
+}
+
+#card-palabra figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  backface-visibility: hidden;
+}
+
+#card-palabra .front {
+    border-radius: .3em;
+  margin: 0;
+    padding: 0;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    font-family: sans-serif;
+    background-color: rgb(247, 254, 255, 0.9); 
+    box-shadow: 0 5px 10px rgba(61,61,61,0.8);
+}
+
+#card-palabra .back {
+  border-radius: .3em;
+  margin: 0;
+    padding: 0;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    font-family: sans-serif;
+    background-color: rgba(255, 210, 158, 0.4); 
+    box-shadow: 0 5px 10px rgba(61,61,61,0.8);
+  transform: rotateY( 180deg);
+}
+
+#card-palabra.flipped {
+  transform: rotateY( 180deg);
+}
+</style>
 
 @endsection
 
 @push('scripts')
+<script>
+    $('#verPalabra').click(function(){
+        $("#card-palabra").toggleClass("flipped");
+    })
+</script>
 
 <script>
     $(document).on('click', '.delete', function(){
