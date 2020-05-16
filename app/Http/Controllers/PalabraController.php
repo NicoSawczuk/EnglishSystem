@@ -27,7 +27,7 @@ class PalabraController extends Controller
      */
     public function create(Palabra $palabra)
     {
-        $temaUsado = null;
+        $temaUsado = new  Tema();
         $modulos= Modulo::all();
         return view('palabras.create', compact('modulos', 'temaUsado'));
     }
@@ -61,7 +61,7 @@ class PalabraController extends Controller
         $temaUsado= Tema::find($request->tema);
         if (!is_null($palabra)) {
             $modulos= Modulo::all();
-            return view('palabras.create',compact('modulos','temaUsado'))->with('success', 'Palabra creada con exito');
+            return view('palabras.create', compact('modulos', 'temaUsado'))->with('success', 'Palabra creada con exito');
             return redirect()->back()->with('success', 'Palabra creada con exito');
         }
         

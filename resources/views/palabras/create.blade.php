@@ -49,11 +49,11 @@
                         <option value="" selected disabled>--Seleccione--</option>
                         @foreach ($modulos as $modulo)
                         @if (!is_null($temaUsado))
-                            @if ($temaUsado->modulo_id == $modulo->id )
-                            <option value="{{$modulo->id}}" selected>{{$modulo->nombre}}</option>
-                            @else
-                            <option value="{{$modulo->id}}">{{$modulo->nombre}}</option>
-                            @endif
+                        @if ($temaUsado->modulo_id == $modulo->id )
+                        <option value="{{$modulo->id}}" selected>{{$modulo->nombre}}</option>
+                        @else
+                        <option value="{{$modulo->id}}">{{$modulo->nombre}}</option>
+                        @endif
 
                         @else
                         <option value="{{$modulo->id}}">{{$modulo->nombre}}</option>
