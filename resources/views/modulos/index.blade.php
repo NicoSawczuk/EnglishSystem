@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-header">Modulos</div>
     <div class="card-body">
-        <table id="datatable" class="table table-striped table-bordered">
+        <table id="datatable" class="table table-striped table-bordered dataTable">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
@@ -33,12 +33,3 @@
     </div>
 </div>
 @endsection
-
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('#datatable').DataTable();
-            
-        } );
-    </script>
-@endpush
