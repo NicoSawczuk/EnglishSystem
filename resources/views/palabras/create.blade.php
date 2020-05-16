@@ -66,8 +66,25 @@
                 @enderror
             </div>
         </div>
+        <div class="form-group row">
+            <div class="form-group col">
+                <label for="nota" class=" col-form-label text-md-right">Notas </label>
+                <textarea name="nota" id="nota" cols="30" rows="10"
+                    class="form-control  @error('nota') is-invalid @enderror" placeholder="Ingrese informacion extra"
+                    value="{{ old('nota') }}">
+
+                </textarea>
+                @error('nota')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+
+        </div>
 
     </div>
+
     <div class="card-footer float">
         <div class="float-right">
             <a href="" class="btn btn-dark"><i class="fal fa-times"></i> Cancelar </a>
