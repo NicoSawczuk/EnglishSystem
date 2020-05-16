@@ -6,18 +6,21 @@
         <a class="btn btn-primary btn-sm float-right text-white" href="{{route('modulos.create')}}">Nuevo</a>
     </div>
     <div class="card-body">
-        <table id="datatable" class="table table-striped table-bordered dataTable">
+        <table class="table table-striped table-bordered dataTable">
             <thead>
                 <tr>
+                    <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>
-                    <th scope="col" class="text-right">Opciones</th>
+                    <th " class="text-right">Opciones</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($modulos as $modulo)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
+                    <td>{{$modulo->id}}</td>
+                    <td>{{$modulo->nombre}}</td>
+                    <td width="30%">{{$modulo->descripcion}}</td>
                     <td class="text-right">
                         <a class="btn btn-light btn-sm" >Editar</a>
                         {{-- href="{{route('modulos.edit', )}}" --}}
@@ -25,6 +28,7 @@
                         {{-- href="{{route('modulos.delete')}}" --}}
                     </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

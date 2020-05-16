@@ -25,7 +25,7 @@ class ModuloController extends Controller
      */
     public function create()
     {
-        //
+        return view('modulos.create');
     }
 
     /**
@@ -36,7 +36,14 @@ class ModuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'nombre' => 'required|unique:modulos,nombre|max:255',
+            'descripcion' => 'required|max:255'
+        ]);
+        $modulo = new Modulo() ;
+        $modulo->fill($request->all());
+        $modulo->save();
+        return redirect()->route('modulos.index');
     }
 
     /**
