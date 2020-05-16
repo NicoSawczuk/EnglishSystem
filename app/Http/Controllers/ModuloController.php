@@ -43,7 +43,7 @@ class ModuloController extends Controller
         $modulo = new Modulo() ;
         $modulo->fill($request->all());
         $modulo->save();
-        return redirect()->route('modulos.index');
+        return redirect()->route('modulos.index')->with('success', 'Modulo creado con éxito');;
     }
 
     /**
@@ -83,7 +83,7 @@ class ModuloController extends Controller
         ]);
         $modulo->fill($request->all());
         $modulo->update();
-        return redirect()->route('modulos.index');
+        return redirect()->route('modulos.index')->with('success', 'Modulo modificado con éxito');
     }
 
     /**
@@ -94,7 +94,11 @@ class ModuloController extends Controller
      */
     public function delete(Modulo $modulo)
     {
-        $modulo->delete();
-        return redirect()->route('modulos.index');
+        if($modulo->temas->isEmpty()){
+            $modulo->delete();
+            return redirect()->route('modulos.index')->with('success', 'Modulo borrado con éxito');
+        }else{
+            return redirect()->back()->with('error', 'No es posible borrar el modulo debido a que tiene temas asociados');
+        }
     }
 }
