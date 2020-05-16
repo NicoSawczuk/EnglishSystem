@@ -20,12 +20,12 @@
     {{-- DataTables --}}
     <link rel="stylesheet" href="{{ asset('extensiones/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 
-    {{-- Toastr --}}
-    <link rel="stylesheet" href="{{ asset('extensiones/toastr/css/toastr.css') }}">
-    <link rel="stylesheet" href="{{ asset('extensiones/toastr/css/toastr.min.css') }}">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- Toastr --}}
+    <link href="{{asset('extensiones/toastr/toastr.min.css')}}" rel="stylesheet"/>
 </head>
 
 <body>
@@ -120,7 +120,9 @@
     <script src="{{asset('js/incluirDatatable.js')}}"></script>
 
     {{-- Toastr --}}
-    <script src="{{asset('extensiones/toastr/js/toastr.min.js')}}"></script>
+    <script src="{{asset('extensiones/toastr/toastr.min.js')}}"></script>
+
+
     @if (session('success'))
     <script>
         toastr.success(' {{ session('success') }} ', 'Correcto')

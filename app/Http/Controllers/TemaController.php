@@ -102,8 +102,13 @@ class TemaController extends Controller
      * @param  \App\Tema  $tema
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tema $tema)
+    public function delete(Tema $tema)
     {
-        //
+        if ($tema->palabras->count() > 0){
+            return redirect(route('temas.index'))->with('error', 'El tema no se puede eliminar porque tiene palabras asociadas');
+        }else{
+            $tema->delete();
+            return redirect(route('temas.index'))->with('success', 'Tema eliminado con éxito');
+        }
     }
 }
