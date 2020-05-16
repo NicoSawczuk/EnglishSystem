@@ -8,11 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>EnglishSistem</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{{ asset('css/fontawesome/css/all.min.css') }}">
 
     {{-- DataTables --}}
     <link rel="stylesheet" href="{{ asset('extensiones/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -32,8 +35,18 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="navbar-brand" href="{{ url('/modulos') }}">
+                        <a class="navbar-brand" href="{{ route('modulos.index') }}">
                             Modulos
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="navbar-brand" href="{{ route('temas.index') }}">
+                            Tema
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="navbar-brand" href="{{ route('palabras.index') }}">
+                            Palablas
                         </a>
                     </li>
                 </ul>
