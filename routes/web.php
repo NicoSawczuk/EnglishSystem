@@ -39,6 +39,7 @@ Route::post('palabras', 'PalabraController@store')->name('palabras.store');
 Route::get('palabras/{palabra}/edit', 'PalabraController@edit')->name('palabras.edit') ;
 Route::put('palabras/{palabra}', 'PalabraController@update')->name('palabras.update') ;
 Route::delete('palabras/delete/{palabra}', 'PalabraController@delete')->name('palabras.delete');
+Route::get('palabras/getTemas/{modulo}', 'PalabraController@getTemas')->name('palabras.getTemas');
 
 
 Auth::routes();

@@ -15,12 +15,13 @@
                     <th scope="col">Ejemplo</th>
                     <th scope="col">Ejemplo Español</th>
                     <th scope="col">Nota</th>
+                    <th scope="col">Tema</th>
                     <th scope="col" class="text-right">Opciones</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach ($palabras as $palabra)
                 <tr>
-                    @foreach ($palabras as $palabra)
 
 
                     <td>{{$palabra->palabra}}</td>
@@ -29,12 +30,13 @@
                     <td>{{$palabra->ejemplo_ingles}}</td>
                     <td>{{$palabra->traduccion_ejemplo}}</td>
                     <td>{{$palabra->nota}}</td>
+                    <td>{{$palabra->tema->nombre}}</td>
                     <td class="text-right">
                         <a class="btn btn-light btn-sm" href="{{ route('palabras.edit', $palabra->id) }}">Editar</a>
                         <a class="btn btn-danger btn-sm text-white delete" val-palabra={{$palabra->id}}>Borrar</a>
                     </td>
-                    @endforeach
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

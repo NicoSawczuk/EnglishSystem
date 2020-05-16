@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Modulo;
+use App\Palabra;
 use Illuminate\Http\Request;
 
 class ModuloController extends Controller
@@ -40,10 +41,12 @@ class ModuloController extends Controller
             'nombre' => 'required|unique:modulos,nombre|max:255',
             'descripcion' => 'required|max:255'
         ]);
-        $modulo = new Modulo() ;
-        $modulo->fill($request->all());
-        $modulo->save();
-        return redirect()->route('modulos.index')->with('success', 'Modulo creado con éxito');;
+        $palabra = new Palabra() ;
+        $palabra->fill($request->all());
+        if ($palabra->save()) {
+            return redirect()->back()->with('success', 'Palabra creada con exito');
+        }
+        return redirect()->back()->withErrors('No se pudo almacenar la palabra');
     }
 
     /**
@@ -94,10 +97,10 @@ class ModuloController extends Controller
      */
     public function delete(Modulo $modulo)
     {
-        if($modulo->temas->isEmpty()){
+        if ($modulo->temas->isEmpty()) {
             $modulo->delete();
             return redirect()->route('modulos.index')->with('success', 'Modulo borrado con éxito');
-        }else{
+        } else {
             return redirect()->back()->with('error', 'No es posible borrar el modulo debido a que tiene temas asociados');
         }
     }
