@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Palabra;
+use App\Tema;
 use Illuminate\Http\Request;
 
 class PalabraController extends Controller
@@ -12,10 +13,10 @@ class PalabraController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Tema $tema)
     {
         $palabras=Palabra::all();
-        return view('palabras.index', compact('palabras'));
+        return view('palabras.index', compact('palabras', 'tema'));
     }
 
     /**
@@ -25,7 +26,7 @@ class PalabraController extends Controller
      */
     public function create()
     {
-        //
+        return view('palabras.create');
     }
 
     /**
@@ -36,7 +37,18 @@ class PalabraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'palabra' => 'required|unique:palabras,palabra|max:60',
+            'pronunciacion' => 'required|max:60',
+            'traduccion_espanol' => 'required|max:120',
+            'ejemplo_ingles' => 'required|max:255',
+            'traduccion_ejemplo' => 'required|max:255',
+            'nota' => 'required|max:255',
+        ]);
+        $modulo = new Modulo() ;
+        $modulo->fill($request->all());
+        $modulo->save();
+        return redirect()->route('modulos.index');
     }
 
     /**

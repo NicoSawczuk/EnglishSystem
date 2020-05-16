@@ -33,7 +33,7 @@ Route::put('temas/{tema}', 'TemaController@update')->name('temas.update') ;
 Route::delete('temas/delete/{tema}', 'TemaController@delete')->name('temas.delete');
 
 //Palabras
-Route::get('palabras', 'PalabraController@index')->name('palabras.index');
+Route::get('palabras/{tema}', 'PalabraController@index')->name('palabras.index');
 Route::get('palabras/create', 'PalabraController@create')->name('palabras.create');
 Route::post('palabras', 'PalabraController@store')->name('palabras.store');
 Route::get('palabras/{palabra}/edit', 'PalabraController@edit')->name('palabras.edit') ;

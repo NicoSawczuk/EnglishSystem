@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">Modulos
-        <a class="btn btn-primary btn-sm float-right text-white" href="{{route('modulos.create')}}">Nuevo</a>
+        <a class="btn btn-primary btn-sm float-right text-white" href="{{route('palabras.create')}}">Nuevo</a>
     </div>
     <div class="card-body">
         <table id="datatable" class="table table-striped table-bordered dataTable">
@@ -30,8 +30,7 @@
                     <td>{{$palabra->traduccion_ejemplo}}</td>
                     <td>{{$palabra->nota}}</td>
                     <td class="text-right">
-                        <a class="btn btn-light btn-sm"
-                            href="{{ route('palabras.edit', ['id'=>$palabra->id]) }}">Editar</a>
+                        <a class="btn btn-light btn-sm" href="{{ route('palabras.edit', $palabra->id) }}">Editar</a>
                         <a class="btn btn-danger btn-sm text-white delete" val-palabra={{$palabra->id}}>Borrar</a>
                     </td>
                     @endforeach
@@ -41,8 +40,6 @@
     </div>
 
 </div>
-@endsection
-
 <div id="confirmDelete" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -65,6 +62,9 @@
         </div>
     </div>
 </div>
+@endsection
+
+
 
 @push('scripts')
 
