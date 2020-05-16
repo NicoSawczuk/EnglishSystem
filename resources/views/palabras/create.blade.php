@@ -3,6 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header">Palabras
+        <a class="btn btn-primary btn-sm float-right text-white" href="{{route('palabras.create')}}">Nuevo</a>
     </div>
     <form action="{{ route('palabras.store') }}" method="POST">
         @csrf
@@ -48,17 +49,7 @@
                     <select name="modulo" id="modulo" class="form-control" required>
                         <option value="" selected disabled>--Seleccione--</option>
                         @foreach ($modulos as $modulo)
-                        @if (!is_null($temaUsado))
-                        @if ($temaUsado->modulo_id == $modulo->id )
-                        <option value="{{$modulo->id}}" selected>{{$modulo->nombre}}</option>
-                        @else
                         <option value="{{$modulo->id}}">{{$modulo->nombre}}</option>
-                        @endif
-
-                        @else
-                        <option value="{{$modulo->id}}">{{$modulo->nombre}}</option>
-                        @endif
-
                         @endforeach
                     </select>
 
@@ -143,15 +134,11 @@
 
 @push('scripts')
 <script>
-    $(document).ready(function () {
-        cargarTemas();
-      });
     $('#modulo option').click(function () {
         cargarTemas();  
     });
 
-   
-      function cargarTemas() {
+    function cargarTemas() {
         var id_ = $('#modulo').val() ;
         var url = "{{ route('palabras.getTemas' , ':id') }}" ;
         url = url.replace(':id' , id_) ;
@@ -160,15 +147,9 @@
         $.get(url ,function(data){
             
             var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
-            var temaSeleccionado= parseInt("{{$temaUsado->id ?? null}}");   
-            if(data['disponible']){
+                if(data['disponible']){
                 for (var i = 0; i < data['temas'].length; i++) {
-                    if(data['temas'][i].id == temaSeleccionado){
-                        html_select += '<option value="'+data['temas'][i].id+'" selected>'+data['temas'][i].nombre+'</option>' ;
-                    }else{
-                        html_select += '<option value="'+data['temas'][i].id+'">'+data['temas'][i].nombre+'</option>' ;
-
-                    }
+                    html_select += '<option value="'+data['temas'][i].id+'">'+data['temas'][i].nombre+'</option>' ;
                 }
                 $('#tema').html(html_select);
                 }else{
