@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Modulo;
 use App\Tema;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class TemaController extends Controller
      */
     public function index()
     {
-        //
+        $temas = Tema::all();
+        return view('/temas/index', compact('temas'));
     }
 
     /**
@@ -24,7 +26,8 @@ class TemaController extends Controller
      */
     public function create()
     {
-        //
+        $modulos = Modulo::all();
+        return view('temas.create', compact('modulos'));
     }
 
     /**
@@ -35,7 +38,20 @@ class TemaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'nombre'        => 'required|regex:/^[a-zA-Z\s]*$/|unique:temas,nombre',
+            'descripcion'   => 'required'
+        ]);
+
+        $tema = new Tema();
+        $tema->nombre = $request->nombre;
+        $tema->descripcion = $request->descripcion;
+        $tema->modulo_id = $request->modulo;
+
+        $tema->save();
+
+        $temas = Tema::all();
+        return redirect(route('temas.index'))->with('success', 'Tema creado con éxito');
     }
 
     /**
@@ -57,7 +73,9 @@ class TemaController extends Controller
      */
     public function edit(Tema $tema)
     {
-        //
+        $modulos = Modulo::all();
+
+        return view('temas.edit', compact('tema', 'modulos'));
     }
 
     /**
@@ -69,7 +87,13 @@ class TemaController extends Controller
      */
     public function update(Request $request, Tema $tema)
     {
-        //
+        $data = request()->validate([
+            'nombre'        => 'required|regex:/^[a-zA-Z\s]*$/|unique:temas,nombre,'.$tema->id,
+            'descripcion'   => 'required'
+        ]);
+
+        $tema->update($data);
+        return redirect(route('temas.index'))->with('success', 'Tema modificado con éxito');
     }
 
     /**

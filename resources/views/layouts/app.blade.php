@@ -20,6 +20,10 @@
     {{-- DataTables --}}
     <link rel="stylesheet" href="{{ asset('extensiones/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 
+    {{-- Toastr --}}
+    <link rel="stylesheet" href="{{ asset('extensiones/toastr/css/toastr.css') }}">
+    <link rel="stylesheet" href="{{ asset('extensiones/toastr/css/toastr.min.css') }}">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -115,6 +119,18 @@
     {{-- Transformador de Datatale a espaniol --}}
     <script src="{{asset('js/incluirDatatable.js')}}"></script>
 
+    {{-- Toastr --}}
+    <script src="{{asset('extensiones/toastr/js/toastr.min.js')}}"></script>
+    @if (session('success'))
+    <script>
+        toastr.success(' {{ session('success') }} ', 'Correcto')
+    </script>
+    @endif
+    @if (session('error'))
+    <script>
+        toastr.error(' {{ session('error') }} ', 'Error')
+    </script>
+    @endif
     @stack('scripts')
 
 </body>
