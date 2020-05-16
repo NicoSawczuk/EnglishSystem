@@ -110,6 +110,7 @@
     {{-- Datatable --}}
     <script src="{{asset('extensiones/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('extensiones/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
 
     {{-- Transformador de Datatale a espaniol --}}
     <script src="{{asset('js/incluirDatatable.js')}}"></script>

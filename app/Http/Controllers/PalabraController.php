@@ -14,7 +14,8 @@ class PalabraController extends Controller
      */
     public function index()
     {
-        //
+        $palabras=Palabra::all();
+        return view('palabras.index', compact('palabras'));
     }
 
     /**
