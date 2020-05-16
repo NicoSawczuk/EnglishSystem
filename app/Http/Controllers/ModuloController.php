@@ -65,7 +65,7 @@ class ModuloController extends Controller
      */
     public function edit(Modulo $modulo)
     {
-        //
+        return view('modulos.edit', compact('modulo')) ;
     }
 
     /**
@@ -77,7 +77,13 @@ class ModuloController extends Controller
      */
     public function update(Request $request, Modulo $modulo)
     {
-        //
+        request()->validate([
+            'nombre' => 'required|max:255|unique:modulos,nombre,'.$modulo->id,
+            'descripcion' => 'required|max:255'
+        ]);
+        $modulo->fill($request->all());
+        $modulo->update();
+        return redirect()->route('modulos.index');
     }
 
     /**
@@ -86,8 +92,9 @@ class ModuloController extends Controller
      * @param  \App\Modulo  $modulo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Modulo $modulo)
+    public function delete(Modulo $modulo)
     {
-        //
+        $modulo->delete();
+        return redirect()->route('modulos.index');
     }
 }
