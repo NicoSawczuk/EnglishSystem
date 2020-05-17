@@ -41,12 +41,12 @@ class ModuloController extends Controller
             'nombre' => 'required|unique:modulos,nombre|max:255',
             'descripcion' => 'required|max:255'
         ]);
-        $palabra = new Palabra() ;
-        $palabra->fill($request->all());
-        if ($palabra->save()) {
-            return redirect()->back()->with('success', 'Palabra creada con exito');
+        $modulo = new Modulo() ;
+        $modulo->fill($request->all());
+        if ($modulo->save()) {
+            return redirect()->back()->with('success', 'Modulo creada con exito');
         }
-        return redirect()->back()->withErrors('No se pudo almacenar la palabra');
+        return redirect()->back()->withErrors('No se pudo almacenar el modulo');
     }
 
     /**

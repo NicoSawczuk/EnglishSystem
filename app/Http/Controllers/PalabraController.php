@@ -27,9 +27,13 @@ class PalabraController extends Controller
      */
     public function create(Palabra $palabra)
     {
-      
+        $ultimaPalabra= Palabra::all()->last();
+        $ultimoModulo= null;
+        if (!is_null($ultimaPalabra)) {
+            $ultimoModulo= $ultimaPalabra->tema->modulo;
+        }
         $modulos= Modulo::all();
-        return view('palabras.create', compact('modulos'));
+        return view('palabras.create', compact('modulos', 'ultimaPalabra', 'ultimoModulo'));
     }
 
     /**
@@ -62,20 +66,23 @@ class PalabraController extends Controller
         if (!is_null($palabra)) {
             $modulos= Modulo::all();
             return redirect()->back()->with('success', 'Palabra creada con exito');
-            return view('palabras.create', compact('modulos', 'temaUsado'))->with('success', 'Palabra creada con exito');
         }
         
         return redirect()->back()->withErrors('No se pudo almacenar la palabra');
     }
     public function getTemas(Modulo $modulo)
     {
-        if (!is_null($modulo)) {
-            if (sizeof($modulo->temas)>0) {
-                return ['disponible'=>true,'temas'=>$modulo->temas];
-            } else {
+        if (request()->ajax()) {
+            if (!is_null($modulo)) {
+                if (sizeof($modulo->temas)>0) {
+                    return response()->json(['disponible'=>true,'temas'=>$modulo->temas]);
+                    return ['disponible'=>true,'temas'=>$modulo->temas];
+                } else {
+                }
             }
+            return response()->json(['disponible'=>true]);
         }
-        return ['disponible'=>false];
+        return redirect()->back()->withErrors('No es ajax');
     }
     /**
      * Display the specified resource.
