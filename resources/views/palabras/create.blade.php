@@ -48,6 +48,7 @@
                     <select name="modulo" id="modulo" class="form-control" required>
                         <option value="" disabled>--Seleccione--</option>
                         @foreach ($modulos as $modulo)
+                        @if (!is_null($ultimoModulo))
                         @if ($ultimoModulo->id == $modulo->id)
 
                         <option value="{{$modulo->id}}" selected>{{$modulo->nombre}}</option>
@@ -56,6 +57,11 @@
 
                         <option value="{{$modulo->id}}">{{$modulo->nombre}}</option>
                         @endif
+                        @else
+
+                        <option value="{{$modulo->id}}">{{$modulo->nombre}}</option>
+                        @endif
+
                         @endforeach
                     </select>
 
@@ -71,7 +77,9 @@
                     <select name="tema" id="tema" class="form-control" required>
 
                         <option value="" disabled>--Seleccione--</option>
+                        @if (!is_null($ultimoModulo))
                         @foreach ($ultimoModulo->temas as $tema)
+                        @if (!is_null($ultimaPalabra))
                         @if ($ultimaPalabra->tema_id == $tema->id)
 
                         <option value="{{$tema->id}}" selected>{{$tema->nombre}}</option>
@@ -80,7 +88,15 @@
 
                         <option value="{{$tema->id}}">{{$tema->nombre}}</option>
                         @endif
+
+                        @else
+                        <option value="{{$tema->id}}">{{$tema->nombre}}</option>
+
+                        @endif
+
                         @endforeach
+                        @endif
+
                     </select>
 
                     @error('tema')
