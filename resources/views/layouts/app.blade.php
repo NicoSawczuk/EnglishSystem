@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>EnglishSistem</title>
+    <title>EnglishSystem</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -43,27 +43,29 @@
                             <b>EnglishSystem</b>
                         </a>
                     </li>
-                    @if (Route::has('abm'))
+                    @can('abm') 
                     <li class="nav-item active">
                         <a class="navbar-brand" href="{{ route('modulos.index') }}">
                             Modulos
                         </a>
                     </li>
-                    @endif
-                    @if (Route::has('abm'))
+                  
+                   
+                    
                     <li class="nav-item active">
                         <a class="navbar-brand" href="{{ route('temas.index') }}">
                             Temas
                         </a>
                     </li>
-                    @endif
-                    @if (Route::has('abm'))
+                   
+                    
                     <li class="nav-item active">
                         <a class="navbar-brand" href="{{ route('palabras.index') }}">
                             Palabras
                         </a>
                     </li>
-                    @endif
+                    @endcan
+                    
                 </ul>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
