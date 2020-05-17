@@ -27,7 +27,7 @@
     {{-- Multiselect --}}
     <link rel="stylesheet" href="{{asset('extensiones/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="{{asset('extensiones/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
-    
+
 
     {{-- Toastr --}}
     <link href="{{asset('extensiones/toastr/toastr.min.css')}}" rel="stylesheet"/>
@@ -43,21 +43,27 @@
                             <b>EnglishSystem</b>
                         </a>
                     </li>
+                    @if (Route::has('abm'))
                     <li class="nav-item active">
                         <a class="navbar-brand" href="{{ route('modulos.index') }}">
                             Modulos
                         </a>
                     </li>
+                    @endif
+                    @if (Route::has('abm'))
                     <li class="nav-item active">
                         <a class="navbar-brand" href="{{ route('temas.index') }}">
-                            Tema
+                            Temas
                         </a>
                     </li>
+                    @endif
+                    @if (Route::has('abm'))
                     <li class="nav-item active">
                         <a class="navbar-brand" href="{{ route('palabras.index') }}">
-                            Palablas
+                            Palabras
                         </a>
                     </li>
+                    @endif
                 </ul>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
