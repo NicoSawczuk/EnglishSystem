@@ -59,6 +59,10 @@
         transform: rotateY(180deg);
     }
 </style>
+@can('hola')
+    
+<h1>Prueba</h1>
+@endcan
 <div class="container">
     <div class="card">
         <div class="card-header">Comienza a practicar</div>

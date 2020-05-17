@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">Modulos
+    <div class="card-header">Palabras
         <a class="btn btn-primary btn-sm float-right text-white" href="{{route('palabras.create')}}">Nuevo</a>
     </div>
     <div class="card-body">

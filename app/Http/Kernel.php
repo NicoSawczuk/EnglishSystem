@@ -20,6 +20,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        
     ];
 
     /**
@@ -62,7 +63,11 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'permission'=>\Caffeinated\Shinobi\Middleware\UserHasRole::class,
+        'role' => \Caffeinated\Shinobi\Middleware\UserHasRole::class,
+        'permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
+        // 'has.role' => \Caffeinated\Shinobi\Middleware\UserHasRole::class,
+        // 'has.permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
+
     ];
 
     /**
