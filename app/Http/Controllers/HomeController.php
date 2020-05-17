@@ -60,6 +60,10 @@ class HomeController extends Controller
             }
         }
         
+        if (!(DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RAND()")->first())->exists()){
+            return '0';
+        }
+
         $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RAND()")->first();
         if ($palabra->ejemplo_ingles == null){
             $palabra->ejemplo_ingles = "";

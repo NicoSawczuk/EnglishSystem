@@ -81,7 +81,8 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="modulo" class="col-form-label text-md-right">Temas</label>
-                    <select class="select2" multiple="multiple" data-placeholder="Seleccione un tema" style="width: 100%;" id="selectTemas" onchange="siguiente()" disabled>
+                    <select class="select2" multiple="multiple" data-placeholder="Seleccione un tema"
+                        style="width: 100%;" id="selectTemas" onchange="siguiente()" disabled>
 
                     </select>
                 </div>
@@ -149,7 +150,8 @@
             data:{idTema:idTema,},
             success:function(result)
             {
-                if ($('#customSwitch1').is(':checked')){
+                if (result != 0){
+                    if ($('#customSwitch1').is(':checked')){
                     // Escribimos el atributo palabra adelante
                     $('.front').html('<h3>'+result['palabra']+'</h3>');
                     $('.back').html(''+
@@ -170,6 +172,7 @@
                     +'');
                     $('#bodyNotas').html(result['nota']);
                 }
+            }
             }
         })
     };
@@ -214,7 +217,7 @@
         })
 </script>
 <script>
-      $(function () {
+    $(function () {
         $('.select2').select2()
         });
 
