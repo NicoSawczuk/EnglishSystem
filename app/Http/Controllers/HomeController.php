@@ -38,9 +38,9 @@ class HomeController extends Controller
         $temas = [];
         $i = 0;
         foreach ($temasAux as $tema){
-            if ($tema->palabras->count() > 0){
+
                 $temas[$i] = [$tema->id, $tema->nombre];
-            }
+
             $i +=1;
         }
         return $temas;
