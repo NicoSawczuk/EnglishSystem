@@ -63,10 +63,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'role' => \Caffeinated\Shinobi\Middleware\UserHasRole::class,
-        'permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
-        // 'has.role' => \Caffeinated\Shinobi\Middleware\UserHasRole::class,
-        // 'has.permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
+        // 'role' => \Caffeinated\Shinobi\Middleware\UserHasRole::class,
+        // 'permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
+        'has.role' => \Caffeinated\Shinobi\Middleware\UserHasRole::class,
+        'has.permission' => \Caffeinated\Shinobi\Middleware\UserHasPermission::class,
 
     ];
 
