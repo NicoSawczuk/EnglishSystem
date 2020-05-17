@@ -5,7 +5,7 @@
     <div class="card-header">Palabras
         <a class="btn btn-primary btn-sm float-right text-white" href="{{route('palabras.create')}}">Nuevo</a>
     </div>
-    <form action="{{ route('palabras.update',$palabra->id) }}"method="POST">
+    <form action="{{ route('palabras.update',$palabra->id) }}" method="POST">
         @csrf
         @method("PUT")
         <div class="card-body">
@@ -58,7 +58,7 @@
 
                         @if ($palabra->tema->modulo_id == $modulo->tema_id)
                         <option value="{{$modulo->id}}" selected>{{$modulo->nombre}}</option>
-                        @else
+                         @else
                         <option value="{{$modulo->id}}">{{$modulo->nombre}}</option>
                         @endif
 
@@ -159,9 +159,13 @@
         url = url.replace(':id' , id_) ;
         var html = '';
         //AJAX
-        $.get(url ,function(data){
-            
-            var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
+        $.ajax({
+                url:url,
+                method:"GET",
+                dataType: 'json',
+                success:function(data)
+                {
+                    var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
             var temaSeleccionado= parseInt("{{$palabra->tema_id}}");   
             if(data['disponible']){
                 for (var i = 0; i < data['temas'].length; i++) {
@@ -179,7 +183,9 @@
                     alert('El modelo seleccionado no tiene temas asociados');
 
                 }
-        });
+
+                }
+            });
       }
 
 </script>

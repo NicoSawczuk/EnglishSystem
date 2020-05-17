@@ -3,11 +3,10 @@
 @section('content')
 <div class="card">
     <div class="card-header">Palabras
-        <a class="btn btn-primary btn-sm float-right text-white" href="{{route('palabras.create')}}">Nuevo</a>
     </div>
-    <form action="{{ route('palabras.store') }}" method="POST">
-        @csrf
-        <div class="card-body">
+    <div class="card-body">
+        <form action="{{ route('palabras.store') }}" method="POST">
+            @csrf
             <div class="form-group row">
                 <div class="form-group col-md">
                     <label for="palabra" class=" col-form-label text-md-right">Palabra (*)</label>
@@ -47,9 +46,16 @@
                 <div class="form-group col-md">
                     <label for="modulo" class=" col-form-label text-md-right">Modulos (*)</label>
                     <select name="modulo" id="modulo" class="form-control" required>
-                        <option value="" selected disabled>--Seleccione--</option>
+                        <option value="" disabled>--Seleccione--</option>
                         @foreach ($modulos as $modulo)
+                        @if ($ultimoModulo->id == $modulo->id)
+
+                        <option value="{{$modulo->id}}" selected>{{$modulo->nombre}}</option>
+
+                        @else
+
                         <option value="{{$modulo->id}}">{{$modulo->nombre}}</option>
+                        @endif
                         @endforeach
                     </select>
 
@@ -64,7 +70,17 @@
                     <label for="tema" class=" col-form-label text-md-right">Temas (*)</label>
                     <select name="tema" id="tema" class="form-control" required>
 
-                        <option value="" selected disabled>--Seleccione--</option>
+                        <option value="" disabled>--Seleccione--</option>
+                        @foreach ($ultimoModulo->temas as $tema)
+                        @if ($ultimaPalabra->tema_id == $tema->id)
+
+                        <option value="{{$tema->id}}" selected>{{$tema->nombre}}</option>
+
+                        @else
+
+                        <option value="{{$tema->id}}">{{$tema->nombre}}</option>
+                        @endif
+                        @endforeach
                     </select>
 
                     @error('tema')
@@ -119,14 +135,14 @@
             </div>
 
 
-        </div>
+    </div>
 
-        <div class="card-footer float">
-            <div class="float-right">
-                <a href="" class="btn btn-dark"><i class="fal fa-times"></i> Cancelar </a>
-                <button type="submit" class="btn btn-primary "><i class="fal fa-check"></i> Guardar</button>
-            </div>
+    <div class="card-footer float">
+        <div class="float-right">
+            <a href="" class="btn btn-dark"><i class="fal fa-times"></i> Cancelar </a>
+            <button type="submit" class="btn btn-primary "><i class="fal fa-check"></i> Guardar</button>
         </div>
+    </div>
 
     </form>
 </div>
@@ -144,9 +160,13 @@
         url = url.replace(':id' , id_) ;
         var html = '';
         //AJAX
-        $.get(url ,function(data){
-            
-            var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
+        $.ajax({
+                url:url,
+                method:"GET",
+                dataType: 'json',
+                success:function(data)
+                {
+                    var html_select = '<option value="" selected disabled>--Seleccione--</option>' ;
                 if(data['disponible']){
                 for (var i = 0; i < data['temas'].length; i++) {
                     html_select += '<option value="'+data['temas'][i].id+'">'+data['temas'][i].nombre+'</option>' ;
@@ -156,9 +176,9 @@
                 
                     $('#tema').html(html_select);
                     alert('El modelo seleccionado no tiene temas asociados');
-
                 }
-        });
+                }
+            });
       }
 
 </script>
