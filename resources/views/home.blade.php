@@ -3,16 +3,16 @@
 @section('content')
 <style>
     .container-palabra {
-        width: 350px;
-        height: 350px;
+        width: 315px;
+        height: 315px;
         position: relative;
         perspective: 800px;
         margin-bottom: 10px;
     }
 
     #card-palabra {
-        width: 350px;
-        height: 350px;
+        width: 315px;
+        height: 315px;
         position: absolute;
         transform-style: preserve-3d;
         transition: transform 1s;
@@ -23,8 +23,8 @@
         margin: 0;
         display: block;
         position: absolute;
-        width: 350px;
-        height: 350px;
+        width: 315px;
+        height: 315px;
         backface-visibility: hidden;
     }
 
@@ -156,7 +156,6 @@
                                     '<p class="text-left" style="margin-left: 10px; margin-top: 10px; font-size: 16px;"><b>Traducción al español:</b> '+result['traduccion_espanol']+'</p>'+
                                     '<p class="text-left" style="margin-left: 10px; margin-top: 10px; font-size: 16px;"><b>Pronunciación:</b> '+result['pronunciacion']+'</p>'+
                                     '<p class="text-left" style="margin-left: 10px; margin-top: 10px; font-size: 16px;"><b>Ejemplos:</b> <br>'+result['ejemplo_ingles']+'<br>'+result['traduccion_ejemplo']+'</p>'+
-                                    '<p class="text-left" style="margin-left: 10px; margin-top: 10px; font-size: 16px;"><b>Traducción:</b> '+result['nota']+'</p>'+
                                     '<a class="btn btn-secondary btn-sm text-white verNotas" val-palabra="'+result['id']+'">Ver notas</a>'
                     +'');
                     $('#bodyNotas').html(result['nota']);
@@ -164,10 +163,9 @@
                     // Escribimos el atributo traduccion_espanol adelante
                     $('.front').html('<h3>'+result['traduccion_espanol']+'</h3>');
                     $('.back').html(''+
-                                    '<p class="text-left" style="margin-left: 10px;"><b>Traducción al ingles:</b> '+result['palabra']+'</p>'+
-                                    '<p class="text-left" style="margin-left: 10px;"><b>Pronunciación:</b> '+result['pronunciacion']+'</p>'+
-                                    '<p class="text-left" style="margin-left: 10px;"><b>Ejemplos:</b> <br>'+result['traduccion_ejemplo']+'<br>'+result['ejemplo_ingles']+'</p>'+
-                                    '<p class="text-left" style="margin-left: 10px;"><b>Traducción:</b> '+result['nota']+'</p>'+
+                                    '<p class="text-left" style="margin-left: 10px; margin-top: 10px;  font-size: 16px;"><b>Traducción al ingles:</b> '+result['palabra']+'</p>'+
+                                    '<p class="text-left" style="margin-left: 10px; margin-top: 10px;  font-size: 16px;"><b>Pronunciación:</b> '+result['pronunciacion']+'</p>'+
+                                    '<p class="text-left" style="margin-left: 10px; margin-top: 10px;  font-size: 16px;"><b>Ejemplos:</b> <br>'+result['traduccion_ejemplo']+'<br>'+result['ejemplo_ingles']+'</p>'+
                                     '<a class="btn btn-secondary btn-sm text-white verNotas" val-palabra="'+result['id']+'">Ver notas</a>'
                     +'');
                     $('#bodyNotas').html(result['nota']);
