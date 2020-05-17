@@ -24,6 +24,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+    {{-- Multiselect --}}
+    <link rel="stylesheet" href="{{asset('extensiones/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('extensiones/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+    
+
     {{-- Toastr --}}
     <link href="{{asset('extensiones/toastr/toastr.min.css')}}" rel="stylesheet"/>
 </head>
@@ -118,6 +123,9 @@
 
     {{-- Transformador de Datatale a espaniol --}}
     <script src="{{asset('js/incluirDatatable.js')}}"></script>
+
+    {{-- Multiselect --}}
+    <script src="{{asset('extensiones/select2/js/select2.full.min.js')}}"></script>
 
     {{-- Toastr --}}
     <script src="{{asset('extensiones/toastr/toastr.min.js')}}"></script>

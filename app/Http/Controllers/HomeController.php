@@ -6,6 +6,7 @@ use App\Modulo;
 use App\Palabra;
 use App\Tema;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -46,9 +47,21 @@ class HomeController extends Controller
     public function cargarCard(Request $request){
         $id = $request->get('idTema');
 
+        $stringConsulta = "";
+        $j = 1;
 
-        $palabra = Palabra::where('tema_id', $id)->orderByRaw("RAND()")->first();
+        foreach ($id as $i){
+            if (count($id) != $j){
+                $stringConsulta = $stringConsulta."tema_id = ".strval($i)." or ";
+                $j += 1;
+            }else{
+                $stringConsulta = $stringConsulta."tema_id = ".strval($i);
+                $j += 1;
+            }
+        }
+        
+        $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RAND()")->first();
+        return json_encode($palabra);
 
-        return $palabra;
     }
 }
