@@ -38,9 +38,7 @@ class HomeController extends Controller
         $temas = [];
         $i = 0;
         foreach ($temasAux as $tema){
-
                 $temas[$i] = [$tema->id, $tema->nombre];
-
             $i +=1;
         }
         return $temas;
@@ -63,6 +61,16 @@ class HomeController extends Controller
         }
         
         $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RAND()")->first();
+        if ($palabra->ejemplo_ingles == null){
+            $palabra->ejemplo_ingles = "";
+        }
+        if ($palabra->traduccion_ejemplo == null){
+            $palabra->traduccion_ejemplo = "";
+        }
+        if ($palabra->nota == null){
+            $palabra->nota = "";
+        }
+
         return json_encode($palabra);
 
     }
