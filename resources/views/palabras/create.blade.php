@@ -165,6 +165,14 @@
 @endsection
 
 @push('scripts')
+@if (is_null($ultimaPalabra))
+<script>
+    $(document).ready(function(){
+        cargarTemas();
+    })
+</script>
+@endif
+
 <script>
     $('#modulo option').click(function () {
         cargarTemas();  
