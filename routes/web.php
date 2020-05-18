@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/logout', function () {
+    return Auth::logout();
+});
 
 //Home
 Route::get('/home/ajax_practica', 'HomeController@cargarTemas')->name('home.cargarTemas')->middleware('permission:hola');;
@@ -49,4 +52,5 @@ Route::get('palabras/getTemas/{modulo}', 'PalabraController@getTemas')->name('pa
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+
