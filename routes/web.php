@@ -19,7 +19,7 @@ Route::get('/logout', function () {
 });
 
 //Home
-Route::get('/home/ajax_practica', 'HomeController@cargarTemas')->name('home.cargarTemas')->middleware('permission:hola');;
+Route::get('/home/ajax_practica', 'HomeController@cargarTemas')->name('home.cargarTemas');
 Route::get('/home/ajax_practica_temas', 'HomeController@cargarCard')->name('home.cargarCard');
 
 

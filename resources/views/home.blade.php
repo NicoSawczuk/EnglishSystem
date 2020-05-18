@@ -151,7 +151,7 @@
             data:{idTema:idTema,},
             success:function(result)
             {
-                if (result != 0){
+                if (result != null){
                     if ($('#customSwitch1').is(':checked')){
                     // Escribimos el atributo palabra adelante
                     $('.front').html('<h3>'+result['palabra']+'</h3>');
@@ -173,6 +173,9 @@
                     +'');
                     $('#bodyNotas').html(result['nota']);
                 }
+            }else{
+                $('.front').html('');
+                $('.back').html('');
             }
             }
         })

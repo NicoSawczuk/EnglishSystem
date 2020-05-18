@@ -60,22 +60,25 @@ class HomeController extends Controller
             }
         }
         
-        if (!(DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RAND()")->first())->exists()){
-            return '0';
-        }
+
 
         $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RAND()")->first();
-        if ($palabra->ejemplo_ingles == null){
-            $palabra->ejemplo_ingles = "";
-        }
-        if ($palabra->traduccion_ejemplo == null){
-            $palabra->traduccion_ejemplo = "";
-        }
-        if ($palabra->nota == null){
-            $palabra->nota = "";
-        }
 
-        return json_encode($palabra);
+        if ($palabra != null){
+            if ($palabra->ejemplo_ingles == null){
+                $palabra->ejemplo_ingles = "";
+            }
+            if ($palabra->traduccion_ejemplo == null){
+                $palabra->traduccion_ejemplo = "";
+            }
+            if ($palabra->nota == null){
+                $palabra->nota = "";
+            }
+    
+            return json_encode($palabra);
+        }else{
+            return json_encode($palabra);
+        }
 
     }
 }
