@@ -50,8 +50,13 @@ class TemaController extends Controller
 
         $tema->save();
 
-        $temas = Tema::all();
-        return redirect(route('temas.index'))->with('success', 'Tema creado con éxito');
+        
+        
+        if ($tema->save()) {
+            $temas = Tema::all();
+            return redirect()->back()->with('success', 'Tema creado con éxito');
+        }
+        return redirect()->back()->withErrors('No se pudo almacenar el tema');
     }
 
     /**
