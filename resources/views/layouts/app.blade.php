@@ -39,7 +39,7 @@
             <div class="container">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="navbar-brand" href="{{ url('/home') }}">
+                        <a class="navbar-brand" href="{{ url('/') }}">
                             <b>EnglishSystem</b>
                         </a>
                     </li>
