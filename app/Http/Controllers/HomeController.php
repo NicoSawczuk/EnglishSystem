@@ -75,7 +75,7 @@ class HomeController extends Controller
         
 //         // $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RAND()")->first();
         
-//         // $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RANDOM()")->first();
+        $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RANDOM()")->first();
 //         //********************* */
 //         $palabra = DB::table('palabras');
        
