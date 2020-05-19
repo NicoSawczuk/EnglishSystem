@@ -47,8 +47,8 @@ class HomeController extends Controller
     public function cargarCard(Request $request){
         $id = $request->get('idTema');
 
-        // $stringConsulta = "";
-        // $j = 1;
+        $stringConsulta = "";
+        $j = 1;
 
 
         foreach ($id as $i){
