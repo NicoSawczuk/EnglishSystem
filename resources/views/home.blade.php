@@ -153,6 +153,7 @@
             data:{idTema:idTema,},
             success:function(result)
             {
+                console.log(result);
                 if (result != null){
                     if ($('#customSwitch1').is(':checked')){
                     // Escribimos el atributo palabra adelante

@@ -47,8 +47,9 @@ class HomeController extends Controller
     public function cargarCard(Request $request){
         $id = $request->get('idTema');
 
-        $stringConsulta = "";
-        $j = 1;
+        // $stringConsulta = "";
+        // $j = 1;
+
 
         foreach ($id as $i){
             $i = intval($i);
@@ -60,10 +61,32 @@ class HomeController extends Controller
                 $j += 1;
             }
         }
+
+//         // foreach ($id as $i){
+//         //     if (count($id) != $j){
+//         //         $stringConsulta = $stringConsulta."tema_id = ".strval($i)." or ";
+//         //         $j += 1;
+//         //     }else{
+//         //         $stringConsulta = $stringConsulta."tema_id = ".strval($i);
+//         //         $j += 1;
+//         //     }
+//         // }
+// >>>>>>> d6dd2eb3d03d1056a1eac7ac7d21aa4a9e2a38a1
         
+//         // $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RAND()")->first();
+        
+//         // $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RANDOM()")->first();
+//         //********************* */
+//         $palabra = DB::table('palabras');
+       
+//         foreach ($id as  $i) {
+//             $palabra = $palabra->orWhere('tema_id',intval($i));
+      
+//         }
+//         $palabra = $palabra->orderbyRaw("RAND()")->first();
+//         //********************* */
 
 
-        $palabra = DB::table('palabras')->whereRaw(strval($stringConsulta))->orderbyRaw("RANDOM()")->first();
 
         if ($palabra != null){
             if ($palabra->ejemplo_ingles == null){
