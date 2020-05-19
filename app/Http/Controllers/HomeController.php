@@ -51,6 +51,7 @@ class HomeController extends Controller
         $j = 1;
 
         foreach ($id as $i){
+            $i = intval($i);
             if (count($id) != $j){
                 $stringConsulta = $stringConsulta."tema_id = ".strval($i)." or ";
                 $j += 1;
