@@ -144,7 +144,9 @@
     function siguiente(){
         var idTema = $('#selectTemas').val();
         $('#siguiente').removeAttr('disabled');
-        $.ajax({
+
+        if (idTema != ''){
+            $.ajax({
             url:"/home/ajax_practica_temas",
             method:"GET",
             dataType: 'json',
@@ -179,6 +181,7 @@
             }
             }
         })
+        }
     };
 </script>
 <script>
