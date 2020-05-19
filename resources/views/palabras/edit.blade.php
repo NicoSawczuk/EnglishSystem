@@ -5,11 +5,11 @@
     <div class="card-header">Palabras
         <a class="btn btn-primary btn-sm float-right text-white" href="{{route('palabras.create')}}">Nuevo</a>
     </div>
-    <form action="{{ route('palabras.update',$palabra->id) }}" method="POST">
-        @csrf
-        @method("PUT")
-        <div class="card-body">
-            <div class="form-group row">
+    <div class="card-body">
+        <form action="{{ route('palabras.update',$palabra->id) }}" method="POST">
+            @csrf
+            @method("PUT")
+        <div class="form-group row">
                 <div class="form-group col-md">
                     <label for="palabra" class=" col-form-label text-md-right">Palabra (*)</label>
                     <input id="palabra" type="text" class="form-control  @error('palabra') is-invalid @enderror"
